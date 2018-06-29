@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <title>Rock Paper Scissors Lizard Spock
+  </title>
+</head>
+
+<body>
+    <h1><strong>Welcome To Rock, Paper, Scissors, Lizard, Spock!</strong></h1>
+    <h1><strong>Type r, p, s, l, or k to begin!</strong></h1>
+<br><br>
+    <div class="container"></div>
+    <div class="row">
+        <div class="div">
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="col-lg-3 bg-light" style="border-style:solid; border-color:black;">
+        <h2>You Chose - <span id="player"></span></h2>
+        <h2>Computer Chose - <span id="computer"></span></h2>
+        <h2>Won = <span id="win">0</span></h2>
+        <h2>Lost = <span id="lose">0</span></h2>
+        <h2>Tied = <span id="tie">0</span></h2>
+        </div>
+        <div class="div">
+            <div class="col-lg-1"></div>
+        </div>
+        <img src="https://laughingsquid.com/wp-content/uploads/how-to-play-20110520-080642.jpg" alt="rpslk">
+    </div>
+    </div>
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["rock", "paper", "scissors", "lizard", "spock"];
+    
+    // Variables for wins loses ties
+    var win = 0;
+    var lose = 0;
+    var tie = 0;
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+      if (userGuess[0] == "r"){
+          var userGuess1 = "rock";
+      }
+      else if (userGuess[0] == "p"){
+          var userGuess1 = "paper";
+      }
+      else if (userGuess[0] == "s"){
+          var userGuess1 = "scissors";
+      }
+      else if (userGuess[0] == "l"){
+          var userGuess1 = "lizard";
+      }
+      else if (userGuess[0] == "k"){
+          var userGuess1 = "spock";
+      }
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      // Only when user inputs r , p , s, l, or k to run code.
+      
+      if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s") || (userGuess === "l") || (userGuess === "k")) {
+         
+      if ((userGuess == "r" && computerGuess == "rock") ||
+      (userGuess == "p" && computerGuess == "paper") ||
+      (userGuess == "s" && computerGuess == "scissors") ||
+      (userGuess == "l" && computerGuess == "lizard") ||
+      (userGuess == "k" && computerGuess == "spock"))
+      {
+        alert("You have tied the game!")
+        tie++
+      }
+      else if((userGuess == "r" && computerGuess == "paper") || 
+            (userGuess == "r" && computerGuess == "spock") || 
+            (userGuess == "s" && computerGuess == "rock") ||
+            (userGuess == "s" && computerGuess == "spock") ||
+            (userGuess == "p" && computerGuess == "scissors") ||
+            (userGuess == "p" && computerGuess == "lizard") ||
+            (userGuess == "l" && computerGuess == "scissors") ||
+            (userGuess == "l" && computerGuess == "rock") ||
+            (userGuess == "k" && computerGuess == "paper") ||
+            (userGuess == "k" && computerGuess == "lizard"))  {
+
+        alert("You Lose!")
+        lose++
+      }
+     
+      else {       
+        alert("You Win!")
+        win++
+      }
+      
+      document.querySelector("#win").innerHTML = win;
+      document.querySelector("#lose").innerHTML = lose;
+      document.querySelector("#tie").innerHTML = tie;
+      document.querySelector("#computer").innerHTML = computerGuess;
+      document.querySelector("#player").innerHTML = userGuess1;
+    }
+    else {
+        alert("You must type r, p, s, l, or k dumbass!!!")
+    }
+    }
+   
+  </script>
+
+</body>
+
+</html>
